@@ -11,3 +11,9 @@ handlers:
 - url: /(.*)\.(html|js|css|png|ico|txt|jpg)
   static_files: static/\1.\2
   upload: static/.*
+
+- url: /signup
+  script: signup.py
+  
+- url: /listsignups
+  script: signup.py
