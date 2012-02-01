@@ -4,6 +4,8 @@ from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
+from google.appengine.api import mail
+
 
 class SignupEmail(db.Model):
   email = db.StringProperty()
@@ -50,6 +52,17 @@ class Signup(webapp.RequestHandler):
         suemail = SignupEmail()
         suemail.email = email
         suemail.put()
+        self.emailus(email)
+        
+    def emailus(self, newmail):
+        mail.send_mail(sender="fran.bull@gmail.com",
+              to="fran.bull@gmail.com",
+              subject="Sign up at roguehacklab",
+              body="""
+Someone signed up at rogue hack lab with email:
+%s
+
+""" % newmail)
         
 class ListSignup(webapp.RequestHandler):
     def get(self):
