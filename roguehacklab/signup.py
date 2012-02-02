@@ -41,11 +41,7 @@ pagehtml = '''
 '''
 
 
-class Signup(webapp.RequestHandler):
-
-    def get(self):
-        self.response.out.write(pagehtml % 'nonono')
-        
+class Signup(webapp.RequestHandler):            
     def post(self):
         email = cgi.escape(self.request.get('email'))
         content = """ok, we will send emails to:
@@ -92,3 +88,6 @@ application = webapp.WSGIApplication([
 
 def main():
   run_wsgi_app(application)
+  
+if __name__ == '__main__':
+  main()
