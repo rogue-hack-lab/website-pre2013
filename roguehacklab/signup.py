@@ -42,6 +42,10 @@ pagehtml = '''
 
 
 class Signup(webapp.RequestHandler):
+
+    def get(self):
+        self.response.out.write(pagehtml % 'nonono')
+        
     def post(self):
         email = cgi.escape(self.request.get('email'))
         content = """ok, we will send emails to:
@@ -70,7 +74,7 @@ class ListSignup(webapp.RequestHandler):
 
         if not user:
             self.redirect(users.create_login_url(self.request.uri))
-        if user.email() not in authemails:
+        elif user.email() not in authemails:
             self.response.out.write(pagehtml % 'There is nothing here.')
         else:
             signups = db.GqlQuery("SELECT * FROM SignupEmail")
