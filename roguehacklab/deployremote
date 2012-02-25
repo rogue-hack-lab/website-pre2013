@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sudo su rhl -c "cd ~/rhl-site && git pull"

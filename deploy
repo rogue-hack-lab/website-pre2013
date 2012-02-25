@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-~/google_appengine/appcfg.py update roguehacklab
+scp -r roguehacklab/deployremote ubuntu@roguehacklab.com:/tmp
+ssh ubuntu@roguehacklab.com "/tmp/deployremote && rm /tmp/deployremote"
