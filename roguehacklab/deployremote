@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
 sudo su rhl -c "cd ~/rhl-site && git pull"
+td=$(mktemp -d)
+sudo mv /usr/lib/cgi-bin/rhl/* ${td}
+echo "Moved everything that was in /usr/lib/cgi-bin/rhl to "${td}
+sudo cp -r /home/rhl/rhl-site/roguehacklab/cgi/* /usr/lib/cgi-bin/rhl/

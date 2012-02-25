@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-sudo touch /tmp/fran
+sudo su rhl -c "cd ~/rhl-site && git pull"
