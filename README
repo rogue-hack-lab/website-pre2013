@@ -1,3 +1,3 @@
 static webpage for roguehacklab.com
 
-Deploy currently consists of 'git pull' on the host ;)
+Deploy currently consists of 'git pull' in /home/rhl/rhl-site/ on the host ;)
