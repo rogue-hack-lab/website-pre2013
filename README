@@ -1,6 +1,3 @@
-GAE static webpage for www.roguehacklab.com.
+static webpage for roguehacklab.com
 
-To deploy, you'll have to install the google app engine SDK, possibly mess
-about with the 'deploy' script, and then run ./deploy. You'll be prompted
-for a google account username/password, and if it has write access to the
-rhl GAE app, it should "just work" :)
+Deploy currently consists of 'git pull' on the host ;)
