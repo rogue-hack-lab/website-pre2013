@@ -1,3 +1,8 @@
-static webpage for roguehacklab.com
+chef cookbook for building lab.roguehacklab.com. Assumes chef-solo, for which
+installation instructions are here:
 
-Deploy currently consists of 'git pull' in /home/rhl/rhl-site/ on the host ;)
+ http://wiki.opscode.com/display/chef/Installing+Chef+Client+on+Ubuntu+or+Debian
+
+make this repo available via the path /home/rhl-site, and then run:
+
+ sudo chef-solo -c lab-solo.rb -j lab-node.json

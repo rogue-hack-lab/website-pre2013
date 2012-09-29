@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-scp -r roguehacklab/deployremote ubuntu@roguehacklab.com:/tmp
-ssh ubuntu@roguehacklab.com "/tmp/deployremote && rm /tmp/deployremote"
