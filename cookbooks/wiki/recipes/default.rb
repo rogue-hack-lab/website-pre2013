@@ -161,3 +161,11 @@ cookbook_file "/var/lib/mediawiki/favicon.ico" do
   mode "0644"
 end
 
+script "create mediawiki database" do
+  not_if "test -d /var/lib/mysql/wikidb"
+  interpreter "bash"
+  code <<END_CODE
+    (echo "create database wikidb;";
+     echo "grant index, create, select, insert, update, delete, alter, lock tables on wikidb.* to 'wikidbuser'@'localhost' identified by '${WIKI_DB_PASSWORD}';";) | mysql -u root
+END_CODE
+end
