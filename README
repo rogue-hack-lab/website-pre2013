@@ -3,6 +3,15 @@ installation instructions are here:
 
  http://wiki.opscode.com/display/chef/Installing+Chef+Client+on+Ubuntu+or+Debian
 
-make this repo available via the path /home/rhl-site, and then run:
+make this repo available via the path /home/rhl-site.
+
+You will need to set several environment variables. Currently this is done
+manually -- the information you need to do this for the live server is all in
+the 'secrets' encrypted file. You'll need:
+
+ WIKI_DB_PASSWORD
+ WIKI_SECRET_KEY
+
+Once those are set, run:
 
  sudo chef-solo -c lab-solo.rb -j lab-node.json
