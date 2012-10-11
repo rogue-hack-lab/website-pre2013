@@ -133,7 +133,7 @@ if (is_file("/etc/mediawiki-extensions/extensions.php")) {
 # sure that cached pages are cleared.
 $wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) );
 
-$wgLogo = "/mediawiki/images/glider.png";
+$wgLogo = "/images/glider.png";
 
 $wgEnableDnsBlacklist = true;
 $wgDnsBlacklistUrls = array( 'zen.spamhaus.org', 'dnsbl.tornevall.org' );

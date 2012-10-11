@@ -149,4 +149,15 @@ mediawiki_extension "SpamBlacklist", "SpamBlacklist-MW1.15-48184.tar.gz"
 mediawiki_extension "SimpleAntiSpam", "SimpleAntiSpam-MW1.15-48246.tar.gz"
 mediawiki_extension "Nuke", "Nuke-MW1.15-48711.tar.gz"
 
-cookbook_file "/var/lib/mediawiki/images/glider.png"
+cookbook_file "/var/lib/mediawiki/images/glider.png" do
+  owner "www-data"
+  group "www-data"
+  mode "0644"
+end
+
+cookbook_file "/var/lib/mediawiki/favicon.ico" do
+  owner "www-data"
+  group "www-data"
+  mode "0644"
+end
+
