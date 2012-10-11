@@ -1,3 +1,14 @@
+def env_assert(n)
+    if not ENV[n]
+        abort "you need to specify #{n} as an environment variable."
+    end
+end
+
+print ENV['WIKI_DB_PASSWORD']
+print ENV
+env_assert('WIKI_DB_PASSWORD')
+env_assert('WIKI_SECRET_KEY')
+
 link "/etc/apache2/mods-enabled/ssl.conf" do
   to "/etc/apache2/mods-available/ssl.conf"
 end
@@ -120,11 +131,22 @@ template "/etc/mediawiki/LocalSettings.php" do
   source "LocalSettings.php"
 end
 
-script "install ConfirmEdit" do
-  not_if "test -d /var/lib/mediawiki/extensions/ConfirmEdit"
-  interpreter "bash"
-  code <<END_CODE
+def mediawiki_extension(x, f)
+    cookbook_file "/var/lib/mediawiki/extensions/#{f}"
+
+    script "install #{x}" do
+        not_if "test -d /var/lib/mediawiki/extensions/#{x}"
+        interpreter "bash"
+        code <<END_CODE
 cd /var/lib/mediawiki/extensions
-curl -O 
+tar -xzvf #{f}
 END_CODE
+    end
 end
+
+mediawiki_extension "ConfirmEdit", "ConfirmEdit-MW1.15-68502.tar.gz"
+mediawiki_extension "SpamBlacklist", "SpamBlacklist-MW1.15-48184.tar.gz"
+mediawiki_extension "SimpleAntiSpam", "SimpleAntiSpam-MW1.15-48246.tar.gz"
+mediawiki_extension "Nuke", "Nuke-MW1.15-48711.tar.gz"
+
+cookbook_file "/var/lib/mediawiki/images/glider.png"

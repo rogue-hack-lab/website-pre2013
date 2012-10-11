@@ -66,7 +66,7 @@ $wgDBtype           = "mysql";
 $wgDBserver         = "localhost";
 $wgDBname           = "wikidb";
 $wgDBuser           = "wikidbuser";
-$wgDBpassword       = "TODO";
+$wgDBpassword       = "<%= ENV['WIKI_DB_PASSWORD'] %>";
 
 # MySQL specific settings
 $wgDBprefix         = "mw_";
@@ -106,7 +106,7 @@ $wgLocalInterwiki   = strtolower( $wgSitename );
 
 $wgLanguageCode = "en";
 
-$wgSecretKey = "TODO";
+$wgSecretKey = "<%= ENV['WIKI_SECRET_KEY'] %>";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, ie 'standard', 'nostalgia', 'cologneblue', 'monobook':
