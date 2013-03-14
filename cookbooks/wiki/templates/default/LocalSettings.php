@@ -66,7 +66,7 @@ $wgDBtype           = "mysql";
 $wgDBserver         = "localhost";
 $wgDBname           = "wikidb";
 $wgDBuser           = "wikidbuser";
-$wgDBpassword       = "<%= ENV['WIKI_DB_PASSWORD'] %>";
+$wgDBpassword       = "<%= ENV['RHL_WIKI_DB_PASSWORD'] %>";
 
 # MySQL specific settings
 $wgDBprefix         = "mw_";

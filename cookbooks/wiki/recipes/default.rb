@@ -4,10 +4,10 @@ def env_assert(n)
     end
 end
 
-print ENV['WIKI_DB_PASSWORD']
-print ENV
-env_assert('WIKI_DB_PASSWORD')
-env_assert('WIKI_SECRET_KEY')
+env_assert('RHL_WIKI_DB_PASSWORD')
+env_assert('RHL_WIKI_SECRET_KEY')
+
+package 'apache2'
 
 link "/etc/apache2/mods-enabled/ssl.conf" do
   to "/etc/apache2/mods-available/ssl.conf"
@@ -166,6 +166,6 @@ script "create mediawiki database" do
   interpreter "bash"
   code <<END_CODE
     (echo "create database wikidb;";
-     echo "grant index, create, select, insert, update, delete, alter, lock tables on wikidb.* to 'wikidbuser'@'localhost' identified by '${WIKI_DB_PASSWORD}';";) | mysql -u root
+     echo "grant index, create, select, insert, update, delete, alter, lock tables on wikidb.* to 'wikidbuser'@'localhost' identified by '${RHL_WIKI_DB_PASSWORD}';";) | mysql -u root
 END_CODE
 end

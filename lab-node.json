@@ -1,1 +1,1 @@
-{ "run_list": [ "role[wiki]", "role[mail]" ] }
+{ "run_list": [ "role[lab]" ] }
