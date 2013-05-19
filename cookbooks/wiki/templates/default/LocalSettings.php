@@ -69,7 +69,7 @@ $wgDBuser           = "wikidbuser";
 $wgDBpassword       = "<%= ENV['RHL_WIKI_DB_PASSWORD'] %>";
 
 # MySQL specific settings
-$wgDBprefix         = "mw_";
+$wgDBprefix         = "";
 
 # MySQL table options to use during installation or update
 $wgDBTableOptions   = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
@@ -133,7 +133,7 @@ if (is_file("/etc/mediawiki-extensions/extensions.php")) {
 # sure that cached pages are cleared.
 $wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) );
 
-$wgLogo = "/images/invader_orange_trans_155x155.png";
+$wgLogo = "/mediawiki/images/invader_orange_trans_155x155.png";
 
 $wgEnableDnsBlacklist = true;
 $wgDnsBlacklistUrls = array( 'zen.spamhaus.org', 'dnsbl.tornevall.org' );

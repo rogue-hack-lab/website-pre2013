@@ -124,6 +124,23 @@ end
 
 package "mediawiki"
 
+script "create mediawiki database" do
+  not_if "test -d /var/lib/mysql/wikidb"
+  interpreter "bash"
+  code <<END_CODE
+    (echo "create database wikidb;";
+     echo "grant index, create, select, insert, update, delete, alter, lock tables on wikidb.* to '${RHL_WIKI_DB_USER}'@'localhost' identified by '${RHL_WIKI_DB_PASSWORD}';";) | mysql -u root
+END_CODE
+end
+
+script "initial mediawiki install" do
+  not_if "test -f /etc/mediawiki/LocalSettings.php"
+  interpreter "bash"
+  code <<END_CODE
+    php /var/lib/mediawiki/maintenance/install.php --dbname wikidb --dbtype mysql --dbuser ${RHL_WIKI_DB_USER} --dbpass ${RHL_WIKI_DB_PASSWORD} --scriptpath /mediawiki --pass ${RHL_WIKI_ADMIN_PASSWORD} "Rogue Hack Lab wiki" roguehacklab ${RHL_WIKI_ADMIN_USER}
+END_CODE
+end
+
 template "/etc/mediawiki/LocalSettings.php" do
   owner "www-data"
   group "www-data"
@@ -159,13 +176,4 @@ cookbook_file "/var/lib/mediawiki/favicon.ico" do
   owner "www-data"
   group "www-data"
   mode "0644"
-end
-
-script "create mediawiki database" do
-  not_if "test -d /var/lib/mysql/wikidb"
-  interpreter "bash"
-  code <<END_CODE
-    (echo "create database wikidb;";
-     echo "grant index, create, select, insert, update, delete, alter, lock tables on wikidb.* to 'wikidbuser'@'localhost' identified by '${RHL_WIKI_DB_PASSWORD}';";) | mysql -u root
-END_CODE
 end
