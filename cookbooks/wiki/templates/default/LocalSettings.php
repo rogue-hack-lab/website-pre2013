@@ -142,7 +142,6 @@ require_once( "$IP/extensions/SpamBlacklist/SpamBlacklist.php" );
 $wgSpamBlacklistFiles = array(
    "http://meta.wikimedia.org/w/index.php?title=Spam_blacklist&action=raw&sb_ver=1",
    "http://en.wikipedia.org/w/index.php?title=MediaWiki:Spam-blacklist&action=raw&sb_ver=1",
-   "DB: wikidb RHL_Blacklist",
 );
 
 require_once("$IP/extensions/SimpleAntiSpam/SimpleAntiSpam.php");
@@ -158,3 +157,5 @@ $wgCaptchaTriggers['create']        = true;
 $wgCaptchaTriggers['addurl']        = true;
 $wgCaptchaTriggers['createaccount'] = true;
 $wgCaptchaTriggers['badlogin']      = true;
+
+$wgShowExceptionDetails = true;

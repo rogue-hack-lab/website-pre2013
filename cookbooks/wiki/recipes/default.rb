@@ -157,14 +157,15 @@ def mediawiki_extension(x, f)
         code <<END_CODE
 cd /var/lib/mediawiki/extensions
 tar -xzvf #{f}
+ln -fs `ls -1 /var/lib/mediawiki/extensions/#{f} | sed -e 's/.tar.gz//'` /var/lib/mediawiki/extensions/#{x}
 END_CODE
     end
 end
 
-mediawiki_extension "ConfirmEdit", "ConfirmEdit-MW1.15-68502.tar.gz"
-mediawiki_extension "SpamBlacklist", "SpamBlacklist-MW1.15-48184.tar.gz"
-mediawiki_extension "SimpleAntiSpam", "SimpleAntiSpam-MW1.15-48246.tar.gz"
-mediawiki_extension "Nuke", "Nuke-MW1.15-48711.tar.gz"
+mediawiki_extension "ConfirmEdit", "wikimedia-mediawiki-extensions-ConfirmEdit-6b867ba.tar.gz"
+mediawiki_extension "SpamBlacklist", "wikimedia-mediawiki-extensions-SpamBlacklist-72c8bfb.tar.gz"
+mediawiki_extension "SimpleAntiSpam", "wikimedia-mediawiki-extensions-SimpleAntiSpam-559827c.tar.gz"
+mediawiki_extension "Nuke", "wikimedia-mediawiki-extensions-Nuke-adb67fe.tar.gz"
 
 cookbook_file "/var/lib/mediawiki/images/invader_orange_trans_155x155.png" do
   owner "www-data"
