@@ -1,0 +1,16 @@
+# See man 5 aliases for format
+postmaster:    root
+hosted-services: dlowe
+
+president: emile
+treasurer: dlowe
+secretary: fran
+
+dlowe: j.david.lowe@gmail.com
+logie: loganbell@gmail.com
+fran: fran.bull@gmail.com
+emile: emile.snyder@gmail.com
+mica: mica.cardillo@gmail.com
+
+rhl-site-commits: dlowe,logie,fran,emile
+secrets-commits: dlowe,logie,fran,emile
