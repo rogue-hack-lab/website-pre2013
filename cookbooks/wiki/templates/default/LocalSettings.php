@@ -69,7 +69,7 @@ $wgDBuser           = "wikidbuser";
 $wgDBpassword       = "<%= ENV['RHL_WIKI_DB_PASSWORD'] %>";
 
 # MySQL specific settings
-$wgDBprefix         = "";
+$wgDBprefix         = "mw_";
 
 # MySQL table options to use during installation or update
 $wgDBTableOptions   = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
