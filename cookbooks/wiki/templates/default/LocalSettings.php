@@ -135,22 +135,31 @@ $wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) )
 
 $wgLogo = "/mediawiki/images/invader_orange_trans_155x155.png";
 
-$wgEnableDnsBlacklist = true;
-$wgDnsBlacklistUrls = array( 'zen.spamhaus.org', 'dnsbl.tornevall.org' );
+# $wgEnableDnsBlacklist = true;
+# $wgDnsBlacklistUrls = array( 'zen.spamhaus.org', 'dnsbl.tornevall.org' );
 
-require_once( "$IP/extensions/SpamBlacklist/SpamBlacklist.php" );
-$wgSpamBlacklistFiles = array(
-   "http://meta.wikimedia.org/w/index.php?title=Spam_blacklist&action=raw&sb_ver=1",
-   "http://en.wikipedia.org/w/index.php?title=MediaWiki:Spam-blacklist&action=raw&sb_ver=1",
-);
+# require_once( "$IP/extensions/SpamBlacklist/SpamBlacklist.php" );
+# $wgSpamBlacklistFiles = array(
+   # "http://meta.wikimedia.org/w/index.php?title=Spam_blacklist&action=raw&sb_ver=1",
+   # "http://en.wikipedia.org/w/index.php?title=MediaWiki:Spam-blacklist&action=raw&sb_ver=1",
+# );
 
-require_once("$IP/extensions/SimpleAntiSpam/SimpleAntiSpam.php");
+# require_once("$IP/extensions/SimpleAntiSpam/SimpleAntiSpam.php");
 
-require_once("$IP/extensions/Nuke/SpecialNuke.php");
+# require_once("$IP/extensions/Nuke/SpecialNuke.php");
 
 require_once("$IP/extensions/ConfirmEdit/ConfirmEdit.php");
-require_once("$IP/extensions/ConfirmEdit/MathCaptcha.php");
-$wgCaptchaClass = 'MathCaptcha';
+require_once("$IP/extensions/ConfirmEdit/QuestyCaptcha.php");
+$wgCaptchaClass = 'QuestyCaptcha';
+
+$arr = array (
+        "_____ Hack Lab" => "Rogue",
+        "Rogue ____ Lab" => "Hack",
+        "Rogue Hack ___" => "Lab",
+);
+foreach ( $arr as $key => $value ) {
+        $wgCaptchaQuestions[] = array( 'question' => $key, 'answer' => $value );
+}
 
 $wgCaptchaTriggers['edit']          = true;
 $wgCaptchaTriggers['create']        = true;
